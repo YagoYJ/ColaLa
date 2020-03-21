@@ -1,0 +1,44 @@
+/* Resetando espaçamentos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+/* Padronizando tamanho de tela e outras configs */
+html,
+body {
+  height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialised;
+}
+
+/* Defininto o tamanho de font padrão (1rem = 10px) */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.container {
+  width: 90%;
+  max-width: 1366px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
