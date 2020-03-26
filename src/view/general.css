@@ -35,6 +35,7 @@ body {
 
 h1 {
   font-size: 3rem;
+  color: #02344e;
 }
 
 h2 {
@@ -45,10 +46,15 @@ h3 {
   font-size: 2rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   width: 90%;
   max-width: 1366px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
 }

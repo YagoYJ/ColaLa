@@ -11,8 +11,6 @@ const routes = require("./routes");
 app.use(express.json());
 app.use(routes);
 
-// app.use(express.static(path.join(__dirname, "../../frontend")));
-
 // CONEXÃO COM O BD:
 // mongoos.connect("", {
 //   useNewUrlParser: true,
@@ -24,6 +22,6 @@ app.use(express.static(path.join(__dirname, "/view")));
 app.use(express.static(path.join(__dirname, "/view/login")));
 
 // PORTA DE CONEXÃO:
-app.listen(8081, () => {
-  console.log("Server rodando...");
-});
+app.listen(3333, () => {
+  console.log("Server started...");
+}); 

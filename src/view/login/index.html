@@ -8,9 +8,39 @@
     <title>Cola lá</title>
   </head>
   <body>
-    <header class="headerLogin">
-      <div class="container"></div>
+    <header>
+      <div class="container">
+        <img src="../assets/logo.svg" alt="Logo ColaLá" />
+      </div>
     </header>
-    <main></main>
+    <main>
+      <!-- <img src="img_login2.svg"> -->
+      <div class="container">
+        <h1>Faça seu Login</h1>
+
+        <form action="#" method="POST">
+          <label for="user">Usuário ou E-mail</label>
+          <input
+            type="text"
+            name="user"
+            id="user"
+            placeholder="Insira seu usuário"
+          />
+          <label for="password">Senha</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Insira sua senha"
+          />
+          <button type="submit" id="loginButton">Fazer login</button>
+        </form>
+
+        <div class="cont">
+          <h3>Novo no cola lá?</h3>
+          <a href="#">Crie sua Conta</a>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
