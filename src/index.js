@@ -1,5 +1,6 @@
 // IMPORTAÇÕES DE MÓDULOS:
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 
 // IMPORTAÇÕES INTERNAS:
@@ -18,10 +19,9 @@ app.use(routes);
 //   useUnifiedTopology: true
 // });
 
-//ROTAS
-app.get("/", (req, res) => {
-  res.send("Opa");
-});
+//Estilizações:
+app.use(express.static(path.join(__dirname, "/view")));
+app.use(express.static(path.join(__dirname, "/view/login")));
 
 // PORTA DE CONEXÃO:
 app.listen(8081, () => {
