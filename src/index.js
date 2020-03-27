@@ -12,10 +12,20 @@ app.use(express.json());
 app.use(routes);
 
 // CONEXÃO COM O BD:
-// mongoos.connect("", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
+mongoose
+  .connect(
+    "mongodb+srv://admin:colalaably1234@colala-bhonx.mongodb.net/test?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  )
+  .then(() => {
+    console.log("Conected with ColaLa database");
+  })
+  .catch(error => {
+    console.log("Error to conect with ColaLa database -> " + error);
+  });
 
 //Estilizações:
 app.use(express.static(path.join(__dirname, "/view")));
@@ -24,4 +34,4 @@ app.use(express.static(path.join(__dirname, "/view/login")));
 // PORTA DE CONEXÃO:
 app.listen(3333, () => {
   console.log("Server started...");
-}); 
+});
