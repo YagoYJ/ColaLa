@@ -2,6 +2,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const bodyparser = require("body-parser");
 
 // IMPORTAÇÕES INTERNAS:
 const app = express();
@@ -10,6 +11,10 @@ const routes = require("./routes");
 // CONFIGURAÇÕES:
 app.use(express.json());
 app.use(routes);
+
+// bodyparser:
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
 
 // CONEXÃO COM O BD:
 mongoose
@@ -29,7 +34,8 @@ mongoose
 
 //Estilizações:
 app.use(express.static(path.join(__dirname, "/view")));
-app.use(express.static(path.join(__dirname, "/view/login")));
+app.use(express.static(path.join(__dirname, "/view/Login")));
+app.use(express.static(path.join(__dirname, "/view/New_User")));
 
 // PORTA DE CONEXÃO:
 app.listen(3333, () => {
