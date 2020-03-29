@@ -23,13 +23,15 @@
       <div class="container">
         <h1>Faça seu Login</h1>
 
-        <form action="#" method="POST">
-          <label for="user">Usuário ou E-mail</label>
+        <form action="/login" method="POST">
+          <label for="nickname">Usuário ou E-mail</label>
           <input
             type="text"
-            name="user"
-            id="user"
+            name="nickname"
+            id="nickname"
             placeholder="Insira seu usuário"
+            required
+            minlength="5"
           />
           <label for="password">Senha</label>
           <input
@@ -37,6 +39,8 @@
             name="password"
             id="password"
             placeholder="Insira sua senha"
+            required
+            minlength="8"
           />
           <button type="submit" id="loginButton">Fazer login</button>
         </form>

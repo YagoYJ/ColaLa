@@ -1,7 +1,8 @@
 const mongoose = require("mongoose"); // Importando o mongoose
 const Schema = mongoose.Schema; // Definindo uma variável para o Schema
 
-const UserSchema = new Schema({ // Criação de um novo Schema
+const UserSchema = new Schema({
+  // Criação de um novo Schema
   // Atributos:
   nickname: {
     type: String, // Tipo do atributo
@@ -35,4 +36,4 @@ const UserSchema = new Schema({ // Criação de um novo Schema
   }
 });
 
-module.exports = mongoose.models("User", UserSchema); // Exportando o Schema
+module.exports = mongoose.model("User", UserSchema); // Exportando o Schema
