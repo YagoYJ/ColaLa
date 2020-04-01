@@ -9,7 +9,7 @@ module.exports = {
     console.log(req.body);
 
     const schema = joi.object().keys({
-      user: joi
+      nickname: joi
         .string()
         .trim()
         .min(5)
@@ -23,7 +23,13 @@ module.exports = {
     joi.validate(req.body, schema, (err, result) => {
       if (err) {
         console.log(err);
-        return res.send("Usuário ou senha inválidos");
+        if(err.message == 'child "nickname" fails because ["nickname" length must be at least 5 characters long]'){
+          res.send('Usuário inválido.')
+        } else if(err.message == 'child "password" fails because ["password" length must be at least 8 characters long]'){
+          res.send('Senha inválida.')
+        } else {
+          res.send('Usuário ou Senha inválidos.')
+        }
       } else {
         res.send("Login realizado com sucesso.");
       }
