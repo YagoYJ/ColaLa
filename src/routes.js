@@ -3,13 +3,13 @@ const bodyparser = require("body-parser");
 
 const UserController = require("./controller/UserController");
 const SessionController = require("./controller/SessionController");
+const bodyParser = require("body-parser")
 
 const routes = Router();
 
-// bodyparser:
-routes.use(bodyparser.urlencoded({ extended: false }));
-routes.use(bodyparser.json());
-
+// Body Parser
+routes.use(bodyParser.urlencoded({ extended: false }))
+routes.use(bodyParser.json())
 
 // BACK-END:
 
