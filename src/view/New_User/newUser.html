@@ -2,11 +2,12 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../general.css" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./newUserStyles.css" />
     <title>Cola lá</title>
   </head>
+
   <body>
     <header>
       <div class="container">
@@ -19,6 +20,64 @@
       </div>
     </header>
 
-    <main></main>
+    <main>
+      <div class="container">
+        <h1>Crie sua Conta</h1>
+
+        <form>
+          <label for="nickname">Nome de Usuário</label>
+          <input
+            type="text"
+            name="nickname"
+            id="nickname"
+            placeholder="Usuario123"
+            minlength="5"
+            required
+          />
+
+          <label for="email">E-mail</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="usuario123@email.com"
+          />
+
+          <label for="bio">Bio</label>
+          <textarea
+            type="text"
+            name="bio"
+            id="bio"
+            placeholder="Fale um pouco de você"
+          ></textarea>
+
+          <label for="profileImg">Imagem de Perfil</label>
+          <input type="image" src="user.webp" alt="submit" />
+
+          <label for="password">Senha</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Mínimo 8 dígitos"
+            minlength="8"
+            required
+          />
+
+          <label for="confirmPass">Confirmar Senha</label>
+          <input
+            type="confirmPass"
+            name="confirmPass"
+            id="confirmPass"
+            placeholder="Repita a senha"
+            minlength="8"
+            required
+          />
+
+          <button type="submit" id="signIn">Criar Conta</button>
+          <a href="/">Fazer login</a>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

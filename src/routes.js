@@ -1,8 +1,15 @@
 const { Router } = require("express");
+const bodyparser = require("body-parser");
+
 const UserController = require("./controller/UserController");
 const SessionController = require("./controller/SessionController");
 
 const routes = Router();
+
+// bodyparser:
+routes.use(bodyparser.urlencoded({ extended: false }));
+routes.use(bodyparser.json());
+
 
 // BACK-END:
 
@@ -22,7 +29,7 @@ routes.get("/", (req, res) => {
 
 // Tela de cadastro de usuário:
 routes.get("/new-user", (req, res) => {
-  res.sendFile(__dirname + "/view/uew_user/newUser.html");
+  res.sendFile(__dirname + "/view/new_user/newUser.html");
 });
 
 module.exports = routes;

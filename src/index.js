@@ -1,6 +1,7 @@
 // IMPORTAÇÕES DE MÓDULOS:
 const express = require("express");
 const path = require("path");
+const bodyparser = require("body-parser");
 
 // Conexão com o BD:
 const connect = require("./database/connect");

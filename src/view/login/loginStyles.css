@@ -1,9 +1,3 @@
-header {
-  width: 100%;
-  height: 100px;
-  background-color: #006699;
-}
-
 header .container {
   align-items: center;
   justify-content: space-between;
@@ -38,31 +32,6 @@ main form {
   flex-direction: column;
 }
 
-main form label {
-  margin: 5px;
-  font-size: 2rem;
-  color: #02344e;
-}
-
-main form input {
-  font-size: 1.8rem;
-  text-align: left;
-  border: 1px solid #cecece;
-  border-radius: 8px;
-  padding: 5px;
-  margin-bottom: 10px;
-}
-
-main form button {
-  color: #ffffff;
-  font-size: 1.8rem;
-  background: #006699;
-  border: none;
-  border-radius: 8px;
-  padding: 5px;
-  cursor: pointer;
-}
-
 main .cont {
   width: 30%;
   border: 1px solid #02344e;
@@ -74,10 +43,12 @@ main .cont {
 
 main .cont h3 {
   color: #02344e;
+  font-weight: normal;
 }
 
 main .cont a {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   margin-left: 10px;
   color: #006699;
+  font-weight: normal;
 }

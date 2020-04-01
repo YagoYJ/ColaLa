@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 /* 
 
 Cores:
@@ -21,6 +22,7 @@ html,
 body {
   height: 100vh;
   text-rendering: optimizeLegibility;
+  font-family: Roboto, Helvetica, sans-serif;
   -webkit-font-smoothing: antialised;
 }
 
@@ -36,6 +38,7 @@ body {
 h1 {
   font-size: 3rem;
   color: #02344e;
+  font-weight: bold;
 }
 
 h2 {
@@ -50,6 +53,12 @@ a {
   text-decoration: none;
 }
 
+header {
+  width: 100%;
+  height: 100px;
+  background: #006699;
+}
+
 .container {
   width: 90%;
   max-width: 1366px;
@@ -57,4 +66,36 @@ a {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+}
+
+form label {
+  margin: 5px;
+  font-size: 2rem;
+  color: #02344e;
+}
+
+form input,
+form textarea {
+  font-size: 1.8rem;
+  font-family: Roboto, Helvetica, sans-serif;
+  text-align: left;
+  border: 1px solid #cecece;
+  border-radius: 8px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form button {
+  color: #ffffff;
+  margin-top: 5px;
+  font-size: 1.8rem;
+  background: #006699;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  cursor: pointer;
 }
