@@ -4,22 +4,17 @@ const SessionController = require("./controller/SessionController");
 
 const routes = Router();
 
-// Back-end:
+// BACK-END:
 
-// GET:
 // Usuários:
 routes.get("/users", UserController.index);
+routes.post("/new-user", UserController.create);
 
-// POST:
-// Autenticação de login:
+// Login:
 routes.post("/session", SessionController.create);
 
-//Validação de cadastro de usuário:
-routes.post("/new-user", (req, res) => {});
+// FRONT-END:
 
-// Fornt-end:
-
-// GET
 // Tela de login:
 routes.get("/", (req, res) => {
   res.sendFile(__dirname + "/view/Login/login.html");
@@ -27,6 +22,7 @@ routes.get("/", (req, res) => {
 
 // Tela de cadastro de usuário:
 routes.get("/new-user", (req, res) => {
-  res.sendFile(__dirname + "/view/New_User/newUser.html");
+  res.sendFile(__dirname + "/view/uew_user/newUser.html");
 });
+
 module.exports = routes;
