@@ -11,7 +11,7 @@
   <body>
     <header>
       <div class="container">
-        <img src="../assets/logo.svg" alt="Logo ColaLá" />
+        <a href="\"><img src="../assets/logo.svg" alt="Logo ColaLá" /></a>
         <img
           src="../assets/img_header.svg"
           alt="Sports ColaLá"
@@ -24,23 +24,24 @@
       <div class="container">
         <h1>Crie sua Conta</h1>
 
-        <form>
-          <label for="nickname">Nome de Usuário</label>
+        <form action="/new-user" method="POST">
+          <label for="nickname">Nome de Usuário*</label>
           <input
             type="text"
             name="nickname"
             id="nickname"
-            placeholder="Usuario123"
+            placeholder="Usuario"
             minlength="5"
             required
           />
 
-          <label for="email">E-mail</label>
+          <label for="email">E-mail*</label>
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
-            placeholder="usuario123@email.com"
+            required
+            placeholder="E-mail"
           />
 
           <label for="bio">Bio</label>
@@ -48,13 +49,13 @@
             type="text"
             name="bio"
             id="bio"
-            placeholder="Fale um pouco de você"
+            placeholder="Fale um pouco sobre você"
           ></textarea>
 
           <label for="profileImg">Imagem de Perfil</label>
-          <input type="image" src="user.webp" alt="submit" />
+          <input type="image" src="" alt="submit" />
 
-          <label for="password">Senha</label>
+          <label for="password">Senha*</label>
           <input
             type="password"
             name="password"
@@ -64,9 +65,9 @@
             required
           />
 
-          <label for="confirmPass">Confirmar Senha</label>
+          <label for="confirmPass">Confirmar Senha*</label>
           <input
-            type="confirmPass"
+            type="password"
             name="confirmPass"
             id="confirmPass"
             placeholder="Repita a senha"
