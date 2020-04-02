@@ -1,7 +1,6 @@
 // IMPORTAÇÕES DE MÓDULOS:
 const express = require("express");
 const path = require("path");
-const bodyparser = require("body-parser");
 
 // Conexão com o BD:
 const connect = require("./database/connect");
@@ -15,12 +14,10 @@ const routes = require("./routes");
 app.use(express.json());
 app.use(routes);
 
-// CONEXÃO COM O BD:
-
 //Estilizações:
 app.use(express.static(path.join(__dirname, "/view")));
-app.use(express.static(path.join(__dirname, "/view/Login")));
-app.use(express.static(path.join(__dirname, "/view/New_User")));
+app.use(express.static(path.join(__dirname, "/view/login")));
+app.use(express.static(path.join(__dirname, "/view/new_User")));
 
 // PORTA DE CONEXÃO:
 app.listen(3333, () => {

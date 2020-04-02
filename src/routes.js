@@ -1,34 +1,38 @@
 const { Router } = require("express");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 
 const UserController = require("./controller/UserController");
-const SessionController = require("./controller/SessionController");
+const AuthenticationController = require("./controller/AuthenticationController");
 
 const routes = Router();
 
 // Body Parser
-routes.use(bodyParser.urlencoded({ extended: false }))
-routes.use(bodyParser.json())
+routes.use(bodyParser.urlencoded({ extended: false }));
+routes.use(bodyParser.json());
 
 // BACK-END:
 
 // Usuários:
-routes.get("/users", UserController.index);
 routes.post("/new-user", UserController.create);
 
 // Login:
-routes.post("/session", SessionController.create);
+routes.post("/auth", AuthenticationController.create);
 
 // FRONT-END:
 
-// Tela de login:
+// Login:
 routes.get("/", (req, res) => {
-  res.sendFile(__dirname + "/view/Login/login.html");
+  res.sendFile(__dirname + "/view/login/login.html");
 });
 
-// Tela de cadastro de usuário:
+// New user:
 routes.get("/new-user", (req, res) => {
   res.sendFile(__dirname + "/view/new_user/newUser.html");
+});
+
+// Home:
+routes.get("/home", (req, res) => {
+  res.sendFile(__dirname + "/view/home/home.html");
 });
 
 module.exports = routes;

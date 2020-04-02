@@ -5,7 +5,6 @@ const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
 
 module.exports = {
-  async index(req, res) {},
   async create(req, res) {
     console.log(req.body);
 
