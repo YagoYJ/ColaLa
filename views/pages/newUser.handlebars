@@ -1,0 +1,30 @@
+<main>
+    <div class="container">
+        <h1>Crie sua Conta</h1>
+
+        <form action="/backend/new-user" method="POST" id="newUserForm">
+            <label for="nickname">Nome de Usuário*</label>
+            <input type="text" name="nickname" id="nickname" placeholder="Usuario" minlength="5" required />
+
+            <label for="email">E-mail*</label>
+            <input type="email" name="email" id="email" placeholder="E-mail" required />
+
+            <label for="bio">Bio</label>
+            <textarea type="text" name="bio" id="bio" placeholder="Fale um pouco sobre você"></textarea>
+
+            <label for="profileImg">Imagem de Perfil</label>
+            <input type="image" src="" alt="submit" />
+
+            <label for="password">Senha*</label>
+            <input type="password" name="password" id="password" placeholder="Mínimo 8 dígitos" minlength="8"
+                required />
+
+            <label for="confirmPass">Confirmar Senha*</label>
+            <input type="password" name="confirmPass" id="confirmPass" placeholder="Repita a senha" minlength="8"
+                required />
+
+            <button type="submit" id="signIn">Criar Conta</button>
+            <a href="/">Fazer login</a>
+        </form>
+    </div>
+</main>

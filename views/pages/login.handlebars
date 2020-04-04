@@ -1,0 +1,19 @@
+<main>
+    <div class="container">
+        <h1>Faça seu Login</h1>
+
+        <form action="/backend/auth" method="POST">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="Insira seu usuário" required minlength="5" />
+            <label for="password">Senha</label>
+            <input type="password" name="password" id="password" placeholder="Insira sua senha" required
+                minlength="8" />
+            <button type="submit" id="loginButton">Fazer login</button>
+        </form>
+
+        <div class="cont">
+            <h3>Novo no ColaLá?</h3>
+            <a href="/new-user">Crie sua Conta</a>
+        </div>
+    </div>
+</main>

@@ -1,21 +1,19 @@
 {
-  "name": "backend",
+  "name": "colala",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "1.19.0",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "express-handlebars": "^4.0.2",
     "joi": "^14.3.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.5",
-    "yarn": "^1.22.4"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.2"
+    "mongoose": "^5.9.7"
   }
 }
