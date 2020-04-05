@@ -5,11 +5,35 @@ const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 const pagesRoutes = require("./routes/pages");
 const backendRoutes = require("./routes/backend");
 
 const app = express();
+
+// SESSION:
+
+app.use(
+  session({
+    secret: "72186cc0c6b187acbd99d7602122805c",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// CONNECT-FLASH:
+
+app.use(flash());
+
+// MIDDLEWARES:
+
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  next();
+});
 
 // BODY-PARSER:
 
