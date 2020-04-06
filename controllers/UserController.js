@@ -73,7 +73,7 @@ module.exports = {
                       bio,
                       password,
                     });
-                    
+
                     bcrypt.genSalt(10, (err, salt) => {
                       bcrypt.hash(newUser.password, salt, (error, hash) => {
                         if (error) {
@@ -82,9 +82,9 @@ module.exports = {
                           return;
                         } else {
                           newUser.password = hash;
-                          
+
                           newUser
-                          .save()
+                            .save()
                             .then(() => {
                               req.flash(
                                 "success_msg",
@@ -96,11 +96,11 @@ module.exports = {
                               req.flash(
                                 "error_msg",
                                 "Erro ao salvar o usuário no banco de dados"
-                                );
-                                res.redirect("/new-user");
-                              });
-                            }
-                          });
+                              );
+                              res.redirect("/new-user");
+                            });
+                        }
+                      });
                     });
                   }
                 })
@@ -108,7 +108,7 @@ module.exports = {
                   req.flash(
                     "error_msg",
                     "Erro ao salvar o usuário no banco de dados"
-                    );
+                  );
                   res.redirect("/new-user");
                 });
             }

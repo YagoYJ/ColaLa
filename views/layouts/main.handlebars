@@ -11,6 +11,12 @@
 
 <body>
     {{>_header}}
+
+    {{#if error}}
+    <div class="msg errorMsg">{{error}}</div>
+    {{else}}
+
+    {{/if}}
     {{>_msg}}
     {{{body}}}
 </body>
