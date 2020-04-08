@@ -6,6 +6,10 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   async create(req, res) {
+
+    console.log(req.file);
+    console.log(req.body);
+
     const schema = joi.object().keys({
       nickname: joi.string().trim().min(5).required(),
       bio: joi.string().allow(""),
