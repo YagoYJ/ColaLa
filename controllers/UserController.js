@@ -14,7 +14,7 @@ module.exports = {
       confirmPass: joi.ref("password"),
     });
 
-    joi.validate(req.body, schema, (err, result) => {
+    await joi.validate(req.body, schema, (err, result) => {
       if (err) {
         if (
           err.message ==
