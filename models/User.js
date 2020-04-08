@@ -34,6 +34,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  passwordResetToken: {
+    type: String,
+    select: false,
+  },
+  passwordResetExpires: {
+    type: Date,
+    select: false,
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema); // Exportando o Schema
