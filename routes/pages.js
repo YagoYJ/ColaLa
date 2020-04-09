@@ -19,4 +19,16 @@ router.get("/home", (req, res) => {
   });
 });
 
+router.get("/forgot-password", (req, res) => {
+  res.render("pages/forgotPassword",{
+    style: "forgotPassword.css"
+  });
+});
+
+router.get("/reset-password", (req, res) => {
+  res.render("pages/resetPassword",{
+    style: "resetPassword.css"
+  });
+});
+
 module.exports = router;

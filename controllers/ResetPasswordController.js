@@ -17,6 +17,7 @@ module.exports = {
       }
 
       if (token !== user.passwordResetToken) {
+        console.log("Token: " + token);
         return res.send("Token inválido.");
       }
 
@@ -53,8 +54,8 @@ module.exports = {
         });
       });
     } catch (error) {
-      console.log(error);
-      res.send("Erro ao resetar a senha, tente novamente");
+      req.flash("error_msg", "Erro ao alterar a senha");
+      res.redirect("/forgot-password");
     }
   },
 };
