@@ -6,9 +6,8 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   async create(req, res) {
-
-    console.log(req.file); // debug, excluir posteriormente 
-    console.log(req.body); // debug, excluir posteriormente 
+    console.log(req.file); // debug, excluir posteriormente
+    console.log(req.body); // debug, excluir posteriormente
 
     const schema = joi.object().keys({
       nickname: joi.string().trim().min(5).required(),
@@ -21,7 +20,7 @@ module.exports = {
 
     await joi.validate(req.body, schema, (err, result) => {
       if (err) {
-        console.log(err.message) // debug, excluir posteriormente 
+        console.log(err.message); // debug, excluir posteriormente
         if (
           err.message ==
           'child "nickname" fails because ["nickname" length must be at least 5 characters long]'
@@ -57,7 +56,7 @@ module.exports = {
           res.redirect("/new-user");
         }
       } else {
-        const { nickname, email, bio, password } = req.body;
+        const { nickname, email, bio, avatar, password } = req.body;
 
         User.findOne({ nickname: nickname })
           .then((user) => {
@@ -77,6 +76,7 @@ module.exports = {
                       nickname,
                       email,
                       bio,
+                      avatar,
                       password,
                     });
 
