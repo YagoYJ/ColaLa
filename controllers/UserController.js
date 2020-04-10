@@ -6,9 +6,6 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   async create(req, res) {
-    console.log(req.file); // debug, excluir posteriormente
-    console.log(req.body); // debug, excluir posteriormente
-
     const schema = joi.object().keys({
       nickname: joi.string().trim().min(5).required(),
       bio: joi.string().allow(""),
@@ -56,7 +53,8 @@ module.exports = {
           res.redirect("/new-user");
         }
       } else {
-        const { nickname, email, bio, avatar, password } = req.body;
+        const { filename } = req.file;
+        const { nickname, email, bio, password } = req.body;
 
         User.findOne({ nickname: nickname })
           .then((user) => {
@@ -76,7 +74,7 @@ module.exports = {
                       nickname,
                       email,
                       bio,
-                      avatar,
+                      avatar: filename,
                       password,
                     });
 

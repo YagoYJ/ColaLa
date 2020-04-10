@@ -3,7 +3,7 @@
 
         <h1>Crie sua Conta</h1>
 
-        <form action="/backend/new-user" method="POST" id="newUserForm">
+        <form action="/backend/new-user" method="POST" id="newUserForm" enctype="multipart/form-data">
             <label for="nickname">Nome de Usuário*</label>
             <input type="text" name="nickname" id="nickname" placeholder="Usuario" minlength="5" required />
 
@@ -13,8 +13,8 @@
             <label for="bio">Bio</label>
             <textarea type="text" name="bio" id="bio" placeholder="Fale um pouco sobre você"></textarea>
 
-            <label for="profileImg">Imagem de Perfil</label>
-            <input type="file" name="avatar" />
+            <label for="avatar">Imagem de Perfil</label>
+            <input type="file" name="avatar" accept=".jpg,.png" />
 
             <label for="password">Senha*</label>
             <input type="password" name="password" id="password" placeholder="Mínimo 8 dígitos" minlength="8"
