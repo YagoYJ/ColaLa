@@ -49,9 +49,10 @@ main .container .event {
 
 main .container .event .card {
   width: 30%;
-  border: 1px solid #02344e;
+  border: 0.5px solid #cecece;
   border-radius: 8px;
   padding: 10px;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1);
 }
 
 main .container .event .card .header {
