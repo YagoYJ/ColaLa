@@ -79,7 +79,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", pagesRoutes);
 app.use("/backend", backendRoutes);
 
-const PORT = process.env.port || 3333;
+const PORT = process.env.PORT || 3333;
 app.listen(PORT, () => {
   console.log("Server started");
 });
