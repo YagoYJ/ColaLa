@@ -33,4 +33,10 @@ router.get("/home", isLogged, (req, res) => {
   });
 });
 
+router.get("/new-event", isLogged, (req, res) => {
+  res.render("pages/newEvent", {
+    style: "newEvent.css",
+  });
+});
+
 module.exports = router;

@@ -8,7 +8,7 @@ const path = require("path");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
-const Handlebars = require('handlebars');
+const Handlebars = require("handlebars");
 const {
   allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
@@ -79,7 +79,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", pagesRoutes);
 app.use("/backend", backendRoutes);
 
-const PORT = 3333;
+const PORT = process.env.port || 3333;
 app.listen(PORT, () => {
   console.log("Server started");
 });
