@@ -4,17 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.2",
+    "express-handlebars": "^4.0.3",
     "express-session": "^1.17.0",
     "joi": "^14.3.1",
     "mongoose": "^5.9.7",
@@ -25,5 +27,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {}
 }

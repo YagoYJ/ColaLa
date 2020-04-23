@@ -21,10 +21,6 @@ var imageUpload = upload.single('avatar');
 
 module.exports = {
   async create(req, res) {
-
-    console.log(req.file); // debug, excluir posteriormente 
-    console.log(req.body); // debug, excluir posteriormente 
-
     const schema = joi.object().keys({
       nickname: joi.string().trim().min(5).required(),
       bio: joi.string().allow(""),
@@ -36,7 +32,7 @@ module.exports = {
 
     await joi.validate(req.body, schema, (err, result) => {
       if (err) {
-        console.log(err.message) // debug, excluir posteriormente 
+        console.log(err.message); // debug, excluir posteriormente
         if (
           err.message ==
           'child "nickname" fails because ["nickname" length must be at least 5 characters long]'
@@ -72,6 +68,7 @@ module.exports = {
           res.redirect("/new-user");
         }
       } else {
+        const { filename } = req.file;
         const { nickname, email, bio, password } = req.body;
 
         User.findOne({ nickname: nickname })
@@ -93,6 +90,7 @@ module.exports = {
                       email,
                       avatar: req.file.path,
                       bio,
+                      avatar: `/uploads/${filename}`,
                       password,
                     });
 

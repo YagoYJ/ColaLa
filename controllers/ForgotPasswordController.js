@@ -36,9 +36,12 @@ module.exports = {
         },
         (error) => {
           if (error) {
-            return res.send("Não foi possível enviar o e-mail => " + error);
+            req.flash("error_msg", "Erro ao enviar o e-mail.");
+            res.render("pages/forgotPassword", {
+              email: email,
+            });
           }
-          return res.send("Deu certo");
+          res.redirect("/reset-password");
         }
       );
     } catch (error) {

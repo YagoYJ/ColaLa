@@ -1,7 +1,3 @@
-header .container {
-  align-items: center;
-  justify-content: space-between;
-}
 main {
   background-image: url("../assets/img_login1.svg");
   background-position: 10% 20%;
@@ -10,26 +6,10 @@ main {
 }
 
 main .container {
-  flex-direction: column;
-  align-items: center;
   background-image: url("../assets/img_login2.svg");
   background-position: 90% 100%;
   background-size: 15% auto;
   background-repeat: no-repeat;
-}
-
-main h1 {
-  margin: 50px 0 50px 0;
-  float: center;
-}
-
-main form {
-  width: 30%;
-  border: 1px solid #02344e;
-  border-radius: 8px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
 }
 
 main .cont {

@@ -1,6 +1,21 @@
 {{#if user}}
+<header class="loggedHeader">
+    <div class="container">
 
+        <div class="profile">
+            <img src="{{user.avatar}}" alt="Perfil" />
+            <p>{{user.nickname}}</p>
+        </div>
+
+        <a href="/home" class="logo">
+            <img src="/assets/logo.svg" alt="Logo ColaLá" />
+        </a>
+
+        <a href="/new-event" class="newEventButton"><i class="fa fa-plus"></i> Criar evento</a>
+    </div>
+</header>
 {{else}}
+
 <header>
     <div class="container">
         <img src="/assets/logo.svg" alt="Logo ColaLá" />

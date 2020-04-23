@@ -8,6 +8,10 @@ const path = require("path");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
+const Handlebars = require("handlebars");
+const {
+  allowInsecurePrototypeAccess,
+} = require("@handlebars/allow-prototype-access");
 
 require("./config/auth")(passport);
 
@@ -41,6 +45,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
+  res.locals.user = req.user || null;
   next();
 });
 
@@ -51,7 +56,13 @@ app.use(bodyParser.json());
 
 // HANDLEBARS:
 
-app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+app.engine(
+  "handlebars",
+  handlebars({
+    defaultLayout: "main",
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+  })
+);
 app.set("view engine", "handlebars");
 
 // MONGOOSE:
@@ -68,7 +79,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", pagesRoutes);
 app.use("/backend", backendRoutes);
 
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 app.listen(PORT, () => {
   console.log("Server started");
 });
