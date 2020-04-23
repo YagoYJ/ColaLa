@@ -1,8 +1,23 @@
 const mongoose = require("mongoose");
 const joi = require("joi");
 require("../models/User");
+require("../routes/backend")
 const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './public/uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, new Date().toISOString().replace(/:/g, '-') + "-" + file.originalname);
+    }
+});
+const upload = multer({storage: storage, limits: {
+    fileSize: 1024 * 1024 * 3
+}});
+
+var imageUpload = upload.single('avatar');
 
 module.exports = {
   async create(req, res) {
@@ -76,6 +91,7 @@ module.exports = {
                     const newUser = new User({
                       nickname,
                       email,
+                      avatar: req.file.path,
                       bio,
                       password,
                     });
@@ -99,6 +115,7 @@ module.exports = {
                               res.redirect("/");
                             })
                             .catch((error) => {
+                              console.log(error);
                               req.flash(
                                 "error_msg",
                                 "Erro ao salvar o usuário no banco de dados"
@@ -111,6 +128,7 @@ module.exports = {
                   }
                 })
                 .catch((error) => {
+                  console.log(error);
                   req.flash(
                     "error_msg",
                     "Erro ao salvar o usuário no banco de dados"
@@ -120,6 +138,7 @@ module.exports = {
             }
           })
           .catch((error) => {
+            console.log(error);
             req.flash(
               "error_msg",
               "Erro ao salvar o usuário no banco de dados"
