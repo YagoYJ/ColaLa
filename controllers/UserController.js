@@ -74,7 +74,7 @@ module.exports = {
                       nickname,
                       email,
                       bio,
-                      avatar: `/uploads/${filename}`,
+                      avatar: `/uploads/profile-${filename}`,
                       password,
                     });
 

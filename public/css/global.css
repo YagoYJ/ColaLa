@@ -138,6 +138,7 @@ main form {
   padding: 30px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
 main form a {
@@ -152,7 +153,8 @@ form label {
 }
 
 form input,
-form textarea {
+form textarea,
+form select {
   font-size: 1.8rem;
   font-family: Roboto, Helvetica, sans-serif;
   text-align: left;

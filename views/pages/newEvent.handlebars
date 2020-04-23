@@ -1,0 +1,35 @@
+<main>
+    <div class="container">
+        <h1>Crie um novo evento</h1>
+
+        <form action="/backend/new-event" method="POST">
+            <input type="hidden" name="user" value="{{user._id}}">
+
+            <label for="title">Título do evento</label>
+            <input type="text" name="title" id="title" placeholder="Dê nome ao evento" minlength="5" required />
+
+            <label for="description">Descrição</label>
+            <textarea type="text" name="description" id="description"
+                placeholder="Faça uma descrição do evento a ser criado" required></textarea>
+
+            <label for="adress">Endereço</label>
+            <input type="text" placeholder="Onde ocorrerá o evento" name="address" required />
+
+            <label for="date">Data</label>
+            <input type="date" name="date" required />
+
+            <label for="hour">Hora</label>
+            <input type="time" name="hour" required />
+
+            <label for="private">O evento é privado?</label>
+            <select name="private" required>
+                <option value="">-- SELECIONE --</option>
+                <option value="true">Sim</option>
+                <option value="false" selected>Não</option>
+            </select>
+
+            <button class="button" type="submit">Criar Evento</button>
+
+        </form>
+    </div>
+</main>
