@@ -9,5 +9,7 @@ const Modality = mongoose.model("Modality");
 module.exports = {
   create(req, res) {
     console.log(req.body);
+    req.flash("success_msg", "Evento cadastrado com sucesso");
+    res.redirect("/home");
   },
 };
