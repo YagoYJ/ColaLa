@@ -1,6 +1,10 @@
 const express = require("express");
 const { isLogged } = require("../helpers/logged");
 
+const mongoose = require("mongoose");
+require("../models/Modality");
+const Modality = mongoose.model("Modality");
+
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -34,9 +38,18 @@ router.get("/home", isLogged, (req, res) => {
 });
 
 router.get("/new-event", isLogged, (req, res) => {
-  res.render("pages/newEvent", {
-    style: "newEvent.css",
-  });
+  Modality.find()
+    .sort("name")
+    .then((modality) => {
+      res.render("pages/newEvent", {
+        style: "newEvent.css",
+        modality: modality,
+      });
+    })
+    .catch((error) => {
+      req.flash("error_msg", "Erro ao carregar dados");
+      res.redirect("/home");
+    });
 });
 
 module.exports = router;

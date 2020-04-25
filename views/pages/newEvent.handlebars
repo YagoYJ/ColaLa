@@ -21,6 +21,14 @@
             <label for="hour">Hora</label>
             <input type="time" name="hour" required />
 
+            <label for="modality">Modalidade</label>
+            <select name="modality">
+                <option value="">-- SELECIONE --</option>
+                {{#each modality}}
+                <option value="{{name}}">{{name}}</option>
+                {{/each}}
+            </select>
+
             <label for="private">O evento é privado?</label>
             <select name="private" required>
                 <option value="">-- SELECIONE --</option>

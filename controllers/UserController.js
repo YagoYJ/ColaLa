@@ -53,8 +53,17 @@ module.exports = {
           res.redirect("/new-user");
         }
       } else {
-        const { filename } = req.file;
         const { nickname, email, bio, password } = req.body;
+
+        if (
+          filename == "" ||
+          filename == null ||
+          typeof filename == undefined
+        ) {
+          filename = "undefined.png";
+        } else {
+          var { filename } = req.file;
+        }
 
         User.findOne({ nickname: nickname })
           .then((user) => {

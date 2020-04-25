@@ -11,8 +11,12 @@ const ForgotPasswordController = require("../controllers/ForgotPasswordControlle
 const ResetPasswordController = require("../controllers/ResetPasswordController");
 const EventController = require("../controllers/EventController");
 
+const mongoose = require("mongoose");
+require("../models/Modality");
+const Modality = mongoose.model("Modality");
+
 // Usuários:
-router.post("/new-user", upload.single("avatar"), (UserController.create));
+router.post("/new-user", upload.single("avatar"), UserController.create);
 
 // Login:
 router.post("/login", LoginController.create);
