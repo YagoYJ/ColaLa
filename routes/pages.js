@@ -4,6 +4,8 @@ const { isLogged } = require("../helpers/logged");
 const mongoose = require("mongoose");
 require("../models/Modality");
 const Modality = mongoose.model("Modality");
+require("../models/Event");
+const Event = mongoose.model("Event");
 
 const router = express.Router();
 
@@ -32,9 +34,20 @@ router.get("/reset-password", (req, res) => {
 });
 
 router.get("/home", isLogged, (req, res) => {
-  res.render("pages/home", {
-    style: "home.css",
-  });
+  Event.find()
+    .limit(3)
+    .sort("date")
+    .populate("user")
+    .then((event) => {
+      res.render("pages/home", {
+        style: "home.css",
+        event: event,
+      });
+    })
+    .catch((error) => {
+      req.flash("error_msg", "Não foi possível carregar os eventos");
+      res.redirect("/home");
+    });
 });
 
 router.get("/new-event", isLogged, (req, res) => {
@@ -42,7 +55,6 @@ router.get("/new-event", isLogged, (req, res) => {
     .sort("name")
     .then((modality) => {
       res.render("pages/newEvent", {
-        style: "newEvent.css",
         modality: modality,
       });
     })

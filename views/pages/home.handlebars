@@ -23,66 +23,32 @@
 
         <h2>Eventos mais famosos:</h2>
         <div class="event">
+        {{#each event}}
             <div class="card">
                 <div class="header">
+
                     <div class="profile">
-                        <img src="/assets/zuck.png" alt="Mark Zuck">
-                        <span>Mark Zuck</span>
+                        <img src="{{user.avatar}}" alt="{{user.nickname}}">
+                        <span>{{user.nickname}}</span>
                     </div>
-                    <button class="button">Detalhes</button>
+                    <button class=" button">Detalhes</button>
                 </div>
-                <img src="/assets/evento.jpg" alt="">
+                <div class="thumbnail">
+                    <img src="{{thumbnail}}" alt="{{title}}">
+                </div>
                 <div class="description">
 
-                    <h3>Corrida dos cachaceiros de Fortaleza</h3>
-                    <span><i class="fa fa-users"></i> 3224234 pessoas confirmadas</span><br>
-                    <span><i class="fa fa-map-marker"></i> Praia dos crush</span>
+                    <h3>{{title}}</h3>
+                    <span><i class="fa fa-users"></i> {{members}} pessoas confirmadas</span><br>
+                    <span><i class="fa fa-map-marker"></i> {{address}}</span><br>
+                    <span><i class="fa fa-calendar"></i> {{date}} às {{hour}}</span>
                 </div>
                 <div class="buttonGroup">
                     <button class="participate"><i class="fa fa-user-plus"></i> Participar</button>
                     <button class="share"><i class="fa fa-share-alt"></i> Compartilhar</button>
                 </div>
             </div>
-            <div class="card">
-                <div class="header">
-                    <div class="profile">
-                        <img src="/assets/zuck.png" alt="Mark Zuck">
-                        <span>Mark Zuck</span>
-                    </div>
-                    <button class="button">Detalhes</button>
-                </div>
-                <img src="/assets/evento.jpg" alt="">
-                <div class="description">
-
-                    <h3>Corrida dos cachaceiros de Fortaleza</h3>
-                    <span><i class="fa fa-users"></i> 3224234 pessoas confirmadas</span><br>
-                    <span><i class="fa fa-map-marker"></i> Praia dos crush</span>
-                </div>
-                <div class="buttonGroup">
-                    <button class="participate"><i class="fa fa-user-plus"></i> Participar</button>
-                    <button class="share"><i class="fa fa-share-alt"></i> Compartilhar</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="header">
-                    <div class="profile">
-                        <img src="/assets/zuck.png" alt="Mark Zuck">
-                        <span>Mark Zuck</span>
-                    </div>
-                    <button class="button">Detalhes</button>
-                </div>
-                <img src="/assets/evento.jpg" alt="">
-                <div class="description">
-
-                    <h3>Corrida dos cachaceiros de Fortaleza</h3>
-                    <span><i class="fa fa-users"></i> 3224234 pessoas confirmadas</span><br>
-                    <span><i class="fa fa-map-marker"></i> Praia dos crush</span>
-                </div>
-                <div class="buttonGroup">
-                    <button class="participate"><i class="fa fa-user-plus"></i> Participar</button>
-                    <button class="share"><i class="fa fa-share-alt"></i> Compartilhar</button>
-                </div>
-            </div>
+            {{/each}}
         </div>
         <a href="#" class="button"><i class="fa fa-eye"></i> Ver mais</a>
     </div>

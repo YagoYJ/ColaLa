@@ -13,13 +13,10 @@ const EventSchema = new Schema({
     type: String,
     required: true,
   },
-  thumbnails: [
-    {
-      type: Schema.Types.ObjectId, // Array de Objetos
-      ref: "Thumbnail", // Referência do Objeto
-      required: true,
-    },
-  ],
+  thumbnail: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -29,7 +26,7 @@ const EventSchema = new Schema({
     required: true,
   },
   date: {
-    type: Date,
+    type: String,
     required: true,
   },
   hour: {

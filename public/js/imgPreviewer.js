@@ -1,4 +1,4 @@
-inputFile = document.getElementById("avatar");
+inputFile = document.querySelector("input[type = file]");
 imgInput = document.getElementById("imgInput");
 imgPreview = document.getElementById("imgPreview");
 imgPreviewContainer = document.getElementById("imgPreviewContainer");

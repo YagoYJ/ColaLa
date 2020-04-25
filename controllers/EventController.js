@@ -19,7 +19,10 @@ module.exports = {
       modality,
       private,
     } = req.body;
-    console.log(req.body);
+
+    const formatDate = date.split("-");
+
+    const thumbnail = req.file.filename;
 
     User.findById({ _id: user })
       .then((user) => {
@@ -31,9 +34,11 @@ module.exports = {
                   const newEvent = new Event({
                     user,
                     title,
+                    thumbnail: `/uploads/${thumbnail}`,
                     description,
                     address,
-                    date,
+                    date:
+                      formatDate[2] + "/" + formatDate[1] + "/" + formatDate[0],
                     hour,
                     modality,
                     private,
@@ -56,7 +61,7 @@ module.exports = {
                 .catch((error) => {
                   req.flash(
                     "error_msg",
-                    "Erro ao carregar o evento, tente novamente"
+                    "Erro ao carregar dados, tente novamente"
                   );
                   res.redirect("/new-event");
                 });

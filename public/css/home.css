@@ -49,10 +49,14 @@ main .container .event {
 
 main .container .event .card {
   width: 30%;
+  min-height: 440px;
   border: 0.5px solid #cecece;
   border-radius: 8px;
   padding: 10px;
   box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 main .container .event .card .header {
@@ -70,19 +74,27 @@ main .container .event .card .header .profile {
 main .container .event .card .header .profile img {
   width: 50px;
   height: 50px;
+  border-radius: 50%;
 }
 
 main .container .event .card .header .profile span {
   color: #02344e;
   margin-left: 5px;
 }
+
 main .container .event .card .header button {
   font-size: 1.4rem;
   margin: 0;
 }
-main .container .event .card img {
+
+main .container .event .card .thumbnail {
   width: 100%;
   margin: 5px auto;
+}
+
+main .container .event .card img {
+  width: 100%;
+  border-radius: 8px;
 }
 
 main .container .event .card .description h3 {

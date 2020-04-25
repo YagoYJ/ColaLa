@@ -28,6 +28,6 @@ router.post("/forgot-password", ForgotPasswordController.create);
 router.post("/reset-password", ResetPasswordController.create);
 
 // Cadastro de evento
-router.post("/new-event", EventController.create);
+router.post("/new-event", upload.single("thumbnail"), EventController.create);
 
 module.exports = router;
