@@ -55,14 +55,18 @@ module.exports = {
       } else {
         const { nickname, email, bio, password } = req.body;
 
+        // const { filename } = req.file;
+        // const filenameDefault = "undefined.png";
+
         if (
-          filename == "" ||
-          filename == null ||
-          typeof filename == undefined
+          !req.file ||
+          req.file == "" ||
+          req.file == null ||
+          typeof req.file == undefined
         ) {
-          filename = "undefined.png";
+          avatar = "undefined.png";
         } else {
-          var { filename } = req.file;
+          avatar = req.file.filename;
         }
 
         User.findOne({ nickname: nickname })
@@ -83,7 +87,7 @@ module.exports = {
                       nickname,
                       email,
                       bio,
-                      avatar: `/uploads/profile-${filename}`,
+                      avatar: `/uploads/${avatar}`,
                       password,
                     });
 
