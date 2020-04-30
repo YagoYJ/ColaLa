@@ -16,7 +16,6 @@ main .cont {
   width: 30%;
   border: 1px solid #02344e;
   border-radius: 8px;
-  margin: 25px;
   padding: 10px 30px;
   display: flex;
 }
@@ -24,6 +23,7 @@ main .cont {
 main .cont h3 {
   color: #02344e;
   font-weight: normal;
+  font-size: 1.9rem;
 }
 
 main .cont a {

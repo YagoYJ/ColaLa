@@ -138,6 +138,7 @@ main form {
   padding: 30px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
 main form a {
@@ -152,7 +153,9 @@ form label {
 }
 
 form input,
-form textarea {
+form textarea,
+form select,
+form .imgInput {
   font-size: 1.8rem;
   font-family: Roboto, Helvetica, sans-serif;
   text-align: left;
@@ -164,6 +167,52 @@ form textarea {
 
 form textarea {
   resize: vertical;
+}
+
+form input[type="file"] {
+  display: none;
+}
+
+form .imgInput {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form .imgInput {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+form .imgInput:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form .imgInput i {
+  color: #006699;
+  font-size: 4rem;
+}
+
+form .imgPreviewContainer {
+  border: none;
+  display: none;
+  overflow: hidden;
+  height: 200px;
+  position: relative;
+}
+
+form .imgPreviewContainer label .imgPreview {
+  width: 100%;
+  float: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 button,

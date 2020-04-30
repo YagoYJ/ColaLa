@@ -4,17 +4,28 @@
         <h1>Crie sua Conta</h1>
 
         <form action="/backend/new-user" method="POST" id="newUserForm" enctype="multipart/form-data">
+
             <label for="nickname">Nome de Usuário*</label>
             <input type="text" name="nickname" id="nickname" placeholder="Usuario" minlength="5" required />
+
 
             <label for="email">E-mail*</label>
             <input type="email" name="email" id="email" placeholder="E-mail" required />
 
+
             <label for="bio">Bio</label>
             <textarea type="text" name="bio" id="bio" placeholder="Fale um pouco sobre você"></textarea>
 
+
             <label for="avatar">Imagem de Perfil</label>
-            <input type="file" name="avatar" accept=".jpg,.png" />
+            <label for="avatar" class="imgInput" id="imgInput"><i class="fa fa-camera"></i></label>
+            <div class="imgPreviewContainer" id="imgPreviewContainer">
+                <label for="avatar">
+                    <img class="imgPreview" id="imgPreview"></img>
+                </label>
+            </div>
+            <input type="file" name="avatar" id="avatar" accept=".jpg,.png" />
+
 
             <label for="password">Senha*</label>
             <input type="password" name="password" id="password" placeholder="Mínimo 8 dígitos" minlength="8"
@@ -29,3 +40,5 @@
         </form>
     </div>
 </main>
+
+<script src="/js/imgPreviewer.js"></script>

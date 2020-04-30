@@ -68,8 +68,21 @@ module.exports = {
           res.redirect("/new-user");
         }
       } else {
-        const { filename } = req.file;
         const { nickname, email, bio, password } = req.body;
+
+        // const { filename } = req.file;
+        // const filenameDefault = "undefined.png";
+
+        if (
+          !req.file ||
+          req.file == "" ||
+          req.file == null ||
+          typeof req.file == undefined
+        ) {
+          avatar = "undefined.png";
+        } else {
+          avatar = req.file.filename;
+        }
 
         User.findOne({ nickname: nickname })
           .then((user) => {
@@ -90,7 +103,7 @@ module.exports = {
                       email,
                       avatar: req.file.path,
                       bio,
-                      avatar: `/uploads/${filename}`,
+                      avatar: `/uploads/${avatar}`,
                       password,
                     });
 
