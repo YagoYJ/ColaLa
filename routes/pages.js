@@ -55,6 +55,7 @@ router.get("/new-event", isLogged, (req, res) => {
     .sort("name")
     .then((modality) => {
       res.render("pages/newEvent", {
+        style: "newEvent.css",
         modality: modality,
       });
     })

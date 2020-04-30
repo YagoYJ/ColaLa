@@ -49,7 +49,7 @@ main .container .event {
 
 main .container .event .card {
   width: 30%;
-  min-height: 440px;
+  height: 440px;
   border: 0.5px solid #cecece;
   border-radius: 8px;
   padding: 10px;
@@ -89,12 +89,20 @@ main .container .event .card .header button {
 
 main .container .event .card .thumbnail {
   width: 100%;
+  height: 220px;
+  overflow: hidden;
   margin: 5px auto;
+  border-radius: 8px;
+  position: relative;
 }
 
-main .container .event .card img {
+main .container .event .card .thumbnail img {
   width: 100%;
   border-radius: 8px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 main .container .event .card .description h3 {

@@ -15,9 +15,9 @@
                     <img class="imgPreview" id="imgPreview"></img>
                 </label>
             </div>
-            <input type="file" name="thumbnail" id="thumbnail" accept=".jpg,.png" required/>
+            <input type="file" name="thumbnail" id="thumbnail" accept=".jpg,.png" />
 
-            <label for="description">Descrição*</label> 
+            <label for="description">Descrição*</label>
             <textarea type="text" name="description" id="description"
                 placeholder="Faça uma descrição do evento a ser criado" required></textarea>
 
@@ -34,7 +34,7 @@
             <select name="modality">
                 <option value="">-- SELECIONE --</option>
                 {{#each modality}}
-                <option value="{{name}}">{{name}}</option>
+                <option value="{{name}}"> {{name}}</option>
                 {{/each}}
             </select>
 

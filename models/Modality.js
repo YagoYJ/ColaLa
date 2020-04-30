@@ -7,6 +7,9 @@ const ModalitySchema = new Schema({
   name: {
     type: String, // Tipo do atributo
   },
+  icon: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Modality", ModalitySchema); // Exportando o Schema
