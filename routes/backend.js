@@ -30,4 +30,11 @@ router.post("/reset-password", ResetPasswordController.create);
 // Cadastro de evento
 router.post("/new-event", upload.single("thumbnail"), EventController.create);
 
+// Logout
+router.get("/logout", (req, res) => {
+  req.logOut();
+  req.flash("success_msg", "Você foi deslogado");
+  res.redirect("/");
+});
+
 module.exports = router;
