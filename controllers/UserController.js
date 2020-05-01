@@ -1,25 +1,36 @@
 const mongoose = require("mongoose");
 const joi = require("joi");
 require("../models/User");
-require("../routes/backend")
+require("../routes/backend");
 const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
-const multer = require('multer');
-const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, './public/uploads/');
-    },
-    filename: function(req, file, cb) {
-        cb(null, new Date().toISOString().replace(/:/g, '-') + "-" + file.originalname);
-    }
-});
-const upload = multer({storage: storage, limits: {
-    fileSize: 1024 * 1024 * 3
-}});
 
-var imageUpload = upload.single('avatar');
+// Configuração para upload de imagens:
+
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      new Date().toISOString().replace(/:/g, "-") + "-" + file.originalname
+    );
+  },
+});
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 3,
+  },
+});
+
+var imageUpload = upload.single("avatar");
 
 module.exports = {
+  // Validação de campos:
+
   async create(req, res) {
     const schema = joi.object().keys({
       nickname: joi.string().trim().min(5).required(),
@@ -30,9 +41,10 @@ module.exports = {
       confirmPass: joi.ref("password"),
     });
 
+    // Verificação de erros:
+
     await joi.validate(req.body, schema, (err, result) => {
       if (err) {
-        console.log(err.message); // debug, excluir posteriormente
         if (
           err.message ==
           'child "nickname" fails because ["nickname" length must be at least 5 characters long]'
@@ -66,97 +78,96 @@ module.exports = {
         ) {
           req.flash("error_msg", "E-mail inválido.");
           res.redirect("/new-user");
-        }
-      } else {
-        const { nickname, email, bio, password } = req.body;
-
-        // const { filename } = req.file;
-        // const filenameDefault = "undefined.png";
-
-        if (
-          !req.file ||
-          req.file == "" ||
-          req.file == null ||
-          typeof req.file == undefined
-        ) {
-          avatar = "undefined.png";
         } else {
-          avatar = req.file.filename;
+          console.log(err.message); // debug, excluir posteriormente
         }
-
-        User.findOne({ nickname: nickname })
-          .then((user) => {
-            if (user) {
-              req.flash("error_msg", "Usuário já cadastrado");
-              res.redirect("/new-user");
-              return;
-            } else {
-              User.findOne({ email: email })
-                .then((user) => {
-                  if (user) {
-                    req.flash("error_msg", "E-mail já cadastrado");
-                    res.redirect("/new-user");
-                    return;
-                  } else {
-                    const newUser = new User({
-                      nickname,
-                      email,
-                      avatar: req.file.path,
-                      bio,
-                      avatar: `/uploads/${avatar}`,
-                      password,
-                    });
-
-                    bcrypt.genSalt(10, (err, salt) => {
-                      bcrypt.hash(newUser.password, salt, (error, hash) => {
-                        if (error) {
-                          req.flash("error_msg", "Erro ao encriptar sua senha");
-                          res.redirect("/new-user");
-                          return;
-                        } else {
-                          newUser.password = hash;
-
-                          newUser
-                            .save()
-                            .then(() => {
-                              req.flash(
-                                "success_msg",
-                                "Usuário cadastrado com sucesso"
-                              );
-                              res.redirect("/");
-                            })
-                            .catch((error) => {
-                              console.log(error);
-                              req.flash(
-                                "error_msg",
-                                "Erro ao salvar o usuário no banco de dados"
-                              );
-                              res.redirect("/new-user");
-                            });
-                        }
-                      });
-                    });
-                  }
-                })
-                .catch((error) => {
-                  console.log(error);
-                  req.flash(
-                    "error_msg",
-                    "Erro ao salvar o usuário no banco de dados"
-                  );
-                  res.redirect("/new-user");
-                });
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-            req.flash(
-              "error_msg",
-              "Erro ao salvar o usuário no banco de dados"
-            );
-            res.redirect("/new-user");
-          });
       }
     });
+
+    // Recebendo dados dos inputs:
+    const { nickname, email, bio, password } = req.body;
+
+    if (
+      !req.file ||
+      req.file == "" ||
+      req.file == null ||
+      typeof req.file == undefined
+    ) {
+      avatar = "profileDefault.png";
+    } else {
+      avatar = req.file.filename;
+    }
+
+    // Salvando no BD:
+
+    await User.findOne({ nickname: nickname })
+      .then((user) => {
+        if (user) {
+          req.flash("error_msg", "Usuário já cadastrado");
+          res.redirect("/new-user");
+          return;
+        } else {
+          User.findOne({ email: email })
+            .then((user) => {
+              if (user) {
+                req.flash("error_msg", "E-mail já cadastrado");
+                res.redirect("/new-user");
+                return;
+              } else {
+                const newUser = new User({
+                  nickname,
+                  email,
+                  avatar,
+                  bio,
+                  avatar: `/uploads/${avatar}`,
+                  password,
+                });
+
+                bcrypt.genSalt(10, (err, salt) => {
+                  bcrypt.hash(newUser.password, salt, (error, hash) => {
+                    if (error) {
+                      req.flash("error_msg", "Erro ao encriptar sua senha");
+                      res.redirect("/new-user");
+                      return;
+                    } else {
+                      newUser.password = hash;
+
+                      newUser
+                        .save()
+                        .then(() => {
+                          req.flash(
+                            "success_msg",
+                            "Usuário cadastrado com sucesso"
+                          );
+                          res.redirect("/");
+                        })
+                        .catch((error) => {
+                          console.log(error);
+                          req.flash(
+                            "error_msg",
+                            "Erro ao salvar o usuário no banco de dados"
+                          );
+                          res.redirect("/new-user");
+                        });
+                    }
+                  });
+                });
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              req.flash(
+                "error_msg",
+                "Erro ao salvar o usuário no banco de dados"
+              );
+              res.redirect("/new-user");
+            });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        req.flash("error_msg", "Erro ao salvar o usuário no banco de dados");
+        res.redirect("/new-user");
+      });
   },
 };
