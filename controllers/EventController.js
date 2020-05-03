@@ -26,7 +26,6 @@ module.exports = {
     });
 
     await joi.validate(req.body, schema, (err, result) => {
-      console.log("Erro: " + err);
       if (err) {
         if (
           err.message ==
@@ -79,94 +78,101 @@ module.exports = {
           req.flash("error_msg", "Informe a privacidade do evento.");
           res.redirect("/new-event");
         }
-      } else {
-        console.log(req.body);
-        console.log(req.file);
-
-        var { date } = req.body;
-        const formatDate = date.split("-");
-        date = formatDate[2] + "/" + formatDate[1] + "/" + formatDate[0];
-
-        const {
-          user,
-          title,
-          description,
-          address,
-          hour,
-          private,
-          modality,
-        } = req.body;
-
-        const thumbnail = req.file.filename;
-
-        User.findById({ _id: user })
-          .then((user) => {
-            Event.findOne({ title: title })
-              .then((event) => {
-                if (!event) {
-                  Modality.findOne({ name: modality })
-                    .then((modality) => {
-                      if (modality) {
-                        const newEvent = new Event({
-                          user,
-                          title,
-                          thumbnail: `/uploads/${thumbnail}`,
-                          description,
-                          address,
-                          date,
-                          hour,
-                          modality,
-                          private,
-                        });
-
-                        newEvent
-                          .save()
-                          .then(() => {
-                            req.flash(
-                              "success_msg",
-                              "Evento cadastrado com sucesso"
-                            );
-                            res.redirect("/home");
-                          })
-                          .catch((error) => {
-                            req.flash(
-                              "error_msg",
-                              "Erro ao cadastrar o evento, tente novamente"
-                            );
-                            res.redirect("/new-event");
-                          });
-                      } else {
-                        req.flash("error_msg", "Modalidade indisponível");
-                      }
-                    })
-                    .catch((error) => {
-                      req.flash(
-                        "error_msg",
-                        "Erro ao carregar dados, tente novamente" + error
-                      );
-                      res.redirect("/new-event");
-                    });
-                } else {
-                  req.flash(
-                    "error_msg",
-                    "Evento já cadastrado com esse título, tente novamente!"
-                  );
-                  res.redirect("/new-event");
-                }
-              })
-              .catch((error) => {
-                req.flash(
-                  "error_msg",
-                  "Erro ao carregar dados, tente novamente!"
-                );
-                res.redirect("/new-event");
-              });
-          })
-          .catch((error) => {
-            req.flash("error_msg", "Usuário inválido");
-            res.redirect("/");
-          });
       }
     });
+
+    if (
+      req.file == null ||
+      req.file == "" ||
+      typeof req.file == undefined ||
+      !req.file
+    ) {
+      req.flash("error_msg", "É necessário uma imagem de Thumbnail");
+      return res.redirect("/new-event");
+    }
+
+    console.log(req.body);
+    console.log(req.file);
+
+    var { date } = req.body;
+    const formatDate = date.split("-");
+    date = formatDate[2] + "/" + formatDate[1] + "/" + formatDate[0];
+
+    const {
+      user,
+      title,
+      description,
+      address,
+      hour,
+      private,
+      modality,
+    } = req.body;
+
+    const thumbnail = req.file.filename;
+
+    User.findById({ _id: user })
+      .then((user) => {
+        Event.findOne({ title: title })
+          .then((event) => {
+            if (!event) {
+              Modality.findOne({ name: modality })
+                .then((modality) => {
+                  if (modality) {
+                    const newEvent = new Event({
+                      user,
+                      title,
+                      thumbnail: `/uploads/${thumbnail}`,
+                      description,
+                      address,
+                      date,
+                      hour,
+                      modality,
+                      private,
+                    });
+
+                    newEvent
+                      .save()
+                      .then(() => {
+                        req.flash(
+                          "success_msg",
+                          "Evento cadastrado com sucesso"
+                        );
+                        res.redirect("/home");
+                      })
+                      .catch((error) => {
+                        req.flash(
+                          "error_msg",
+                          "Erro ao cadastrar o evento, tente novamente"
+                        );
+                        res.redirect("/new-event");
+                      });
+                  } else {
+                    req.flash("error_msg", "Modalidade indisponível");
+                  }
+                })
+                .catch((error) => {
+                  req.flash(
+                    "error_msg",
+                    "Erro ao carregar dados, tente novamente" + error
+                  );
+                  res.redirect("/new-event");
+                });
+            } else {
+              req.flash(
+                "error_msg",
+                "Evento já cadastrado com esse título, tente novamente!"
+              );
+              res.redirect("/new-event");
+            }
+          })
+          .catch((error) => {
+            req.flash("error_msg", "Erro ao carregar dados, tente novamente!");
+            res.redirect("/new-event");
+          });
+      })
+      .catch((error) => {
+        req.flash("error_msg", "Usuário inválido");
+        res.redirect("/");
+      });
   },
 };

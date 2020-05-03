@@ -10,6 +10,7 @@ const LoginController = require("../controllers/LoginController");
 const ForgotPasswordController = require("../controllers/ForgotPasswordController");
 const ResetPasswordController = require("../controllers/ResetPasswordController");
 const EventController = require("../controllers/EventController");
+const ParticipateController = require("../controllers/ParticipateController");
 
 const mongoose = require("mongoose");
 require("../models/Modality");
@@ -29,6 +30,9 @@ router.post("/reset-password", ResetPasswordController.create);
 
 // Cadastro de evento
 router.post("/new-event", upload.single("thumbnail"), EventController.create);
+
+// Participar de evento:
+router.post("/participate", ParticipateController.create);
 
 // Logout
 router.get("/logout", (req, res) => {

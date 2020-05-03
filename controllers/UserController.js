@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const joi = require("joi");
-require("../models/User");
+
 require("../routes/backend");
+require("../models/User");
+
 const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
 

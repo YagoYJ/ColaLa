@@ -165,6 +165,12 @@ form .imgInput {
   margin-bottom: 10px;
 }
 
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border: 2px solid #00669980;
+}
+
 form textarea {
   resize: vertical;
 }

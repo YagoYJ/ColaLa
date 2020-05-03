@@ -44,6 +44,7 @@ const EventSchema = new Schema({
   },
   members: {
     type: [String],
+    default: [],
   },
 });
 

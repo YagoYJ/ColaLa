@@ -39,13 +39,17 @@
                 <div class="description">
 
                     <h3>{{title}}</h3>
-                    <span><i class="fa fa-users"></i> {{members}} pessoas confirmadas</span><br>
+                    <span><i class="fa fa-users"></i> {{members.length}} pessoas confirmadas</span><br>
                     <span><i class="fa fa-map-marker"></i> {{address}}</span><br>
                     <span><i class="fa fa-calendar"></i> {{date}} às {{hour}}</span>
                 </div>
                 <div class="buttonGroup">
-                    <button class="participate"><i class="fa fa-user-plus"></i> Participar</button>
-                    <button class="share"><i class="fa fa-share-alt"></i> Compartilhar</button>
+                    <form action="/backend/participate" method="POST">
+                        <input type="hidden" name="user" value="{{user.id}}">
+                        <input type="hidden" name="event" value="{{id}}">
+                        <button class="participate" type="submit"><i class="fa fa-user-plus"></i> Participar</button>
+                        <button class="share"><i class="fa fa-share-alt"></i> Compartilhar</button>
+                    </form>
                 </div>
             </div>
             {{/each}}
