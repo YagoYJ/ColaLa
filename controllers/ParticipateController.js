@@ -22,7 +22,7 @@ module.exports = {
             .then((event) => {
               if (!event) {
                 req.flash("error_msg", "Evento inválido");
-                res.redirect("/home");
+                res.redirect("back");
               } else {
                 const member = event.members.find(
                   (member) => member == user.nickname
@@ -33,7 +33,7 @@ module.exports = {
                     "error_msg",
                     "Você já está participando deste evento!"
                   );
-                  res.redirect("/home");
+                  res.redirect("back");
                 } else {
                   event.members.push(user.nickname);
                   user.participations.push(event);
@@ -48,14 +48,14 @@ module.exports = {
                             "success_msg",
                             "Você está participando do evento " + event.title
                           );
-                          res.redirect("/home");
+                          res.redirect("back");
                         })
                         .catch((error) => {
                           req.flash(
                             "error_msg",
                             "Não foi possível participar do evento, tente novamente!"
                           );
-                          res.rediret("/home");
+                          res.rediret("back");
                         });
                     })
                     .catch((error) => {
@@ -63,20 +63,20 @@ module.exports = {
                         "error_msg",
                         "Não foi possível participar do evento, tente novamente!"
                       );
-                      res.rediret("/home");
+                      res.rediret("back");
                     });
                 }
               }
             })
             .catch((error) => {
               req.flash("error_msg", "Erro ao autenticar o evento." + error);
-              res.redirect("/home");
+              res.redirect("back");
             });
         }
       })
       .catch((error) => {
         req.flash("error_msg", "Erro ao autenticar o usuário." + error);
-        res.redirect("/home");
+        res.redirect("back");
       });
   },
 };
