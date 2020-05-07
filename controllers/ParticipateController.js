@@ -8,7 +8,8 @@ const Event = mongoose.model("Event");
 
 module.exports = {
   async create(req, res) {
-    const { user, event } = req.body;
+    const { event } = req.body;
+    const user = res.locals.user.id;
 
     await User.findById(user)
       .populate("participations")

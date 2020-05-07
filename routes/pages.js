@@ -52,7 +52,7 @@ router.get("/home", isLogged, (req, res) => {
 
 router.get("/new-event", isLogged, (req, res) => {
   Modality.find()
-    .sort("name")
+    .sort([["members", -1]])
     .then((modality) => {
       res.render("pages/newEvent", {
         style: "newEvent.css",
@@ -62,6 +62,23 @@ router.get("/new-event", isLogged, (req, res) => {
     .catch((error) => {
       req.flash("error_msg", "Erro ao carregar dados");
       res.redirect("/home");
+    });
+});
+
+router.get("/events", isLogged, (req, res) => {
+  Event.find()
+    .sort([["members", -1]])
+    .populate("user")
+    .then((event) => {
+      res
+        .render("pages/events", {
+          style: "events.css",
+          event: event,
+        })
+        .catch((error) => {
+          req.flash("error_msg", "Não foi possível carregar os eventos");
+          res.redirect("/home");
+        });
     });
 });
 

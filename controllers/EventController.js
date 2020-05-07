@@ -91,22 +91,12 @@ module.exports = {
       return res.redirect("/new-event");
     }
 
-    console.log(req.body);
-    console.log(req.file);
-
     var { date } = req.body;
     const formatDate = date.split("-");
     date = formatDate[2] + "/" + formatDate[1] + "/" + formatDate[0];
+    const user = res.locals.user.id;
 
-    const {
-      user,
-      title,
-      description,
-      address,
-      hour,
-      private,
-      modality,
-    } = req.body;
+    const { title, description, address, hour, private, modality } = req.body;
 
     const thumbnail = req.file.filename;
 

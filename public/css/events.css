@@ -1,0 +1,98 @@
+.container h1 {
+  margin: 50px 0;
+}
+
+main .container .event {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+main .container .event .card {
+  width: 30%;
+  height: 440px;
+  border: 0.5px solid #cecece;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+main .container .event .card .header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main .container .event .card .header .profile {
+  display: flex;
+  align-items: center;
+}
+
+main .container .event .card .header .profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+main .container .event .card .header .profile span {
+  color: #02344e;
+  margin-left: 5px;
+}
+
+main .container .event .card .header button {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+main .container .event .card .thumbnail {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  margin: 5px auto;
+  border-radius: 8px;
+  position: relative;
+}
+
+main .container .event .card .thumbnail img {
+  width: 100%;
+  border-radius: 8px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main .container .event .card .description h3 {
+  font-size: 1.5rem;
+}
+
+main .container .event .card .description span {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+main .container .event .card .buttonGroup form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+}
+
+main .container .event .card .buttonGroup form .participate {
+  width: 48%;
+  background-color: #29c542;
+}
+main .container .event .card .buttonGroup form .share {
+  width: 48%;
+}
