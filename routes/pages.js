@@ -70,15 +70,14 @@ router.get("/events", isLogged, (req, res) => {
     .sort([["members", -1]])
     .populate("user")
     .then((event) => {
-      res
-        .render("pages/events", {
-          style: "events.css",
-          event: event,
-        })
-        .catch((error) => {
-          req.flash("error_msg", "Não foi possível carregar os eventos");
-          res.redirect("/home");
-        });
+      res.render("pages/events", {
+        style: "events.css",
+        event: event,
+      });
+    })
+    .catch((error) => {
+      req.flash("error_msg", "Não foi possível carregar os eventos");
+      res.redirect("/home");
     });
 });
 
