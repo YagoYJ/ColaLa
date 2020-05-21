@@ -81,4 +81,19 @@ router.get("/events", isLogged, (req, res) => {
     });
 });
 
+router.get("/modalities", isLogged, (req, res) => {
+  Modality.find()
+    .sort("name")
+    .then((modality) => {
+      res.render("pages/modalities", {
+        style: "modalities.css",
+        modality: modality,
+      });
+    })
+    .catch((error) => {
+      req.flash("error_msg", "Não foi possível carregar as modalidades");
+      res.redirect("/home");
+    });
+});
+
 module.exports = router;

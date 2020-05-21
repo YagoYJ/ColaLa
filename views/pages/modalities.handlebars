@@ -1,0 +1,21 @@
+<main>
+    <div class="container">
+        <h1>Modalidades</h1>
+        <div class="modalities">
+            {{#each modality}}
+            <div class="link">
+                <a href="#">
+                    <div class="left">
+                        <svg>
+                            <image class="modalityIcon" xlink:href="{{icon}}" />
+                        </svg>
+                        <span>{{name}}</span>
+                    </div>
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+
+    </div>
+</main>
