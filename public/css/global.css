@@ -1,15 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
-/* 
 
+/*
 Cores:
 
 Azul: #006699;
 Azul-escuro: #02344E;
 Cinza-claro: #CECECE;
 
-*/
 
-/* Resetando espaçamentos */
+
+Resetando espaçamentos 
+*/
 * {
   margin: 0;
   padding: 0;
@@ -26,233 +27,52 @@ body {
   -webkit-font-smoothing: antialised;
 }
 
-/* Defininto o tamanho de font padrão (1rem = 10px) */
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1.6rem;
-}
-
-h1 {
-  font-size: 3rem;
-  color: #02344e;
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 2.5rem;
-  color: #02344e;
-  font-weight: bold;
-}
-
-h3 {
-  font-size: 2rem;
-  color: #02344e;
-  font-weight: bold;
-}
-
-a {
-  text-decoration: none;
-}
-
 header {
   width: 100%;
-  height: 100px;
-  background: #006699;
+  height: 80px;
+  background-color: #006699;
 }
 
 header .container {
-  align-items: center;
-  justify-content: space-between;
-}
-
-.loggedHeader .container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.loggedHeader .container .profile {
-  display: flex;
-  align-items: center;
-}
-
-.loggedHeader .container .profile img {
-  width: 70px;
-  height: 70px;
-  border: none;
-  border-radius: 50%;
-}
-
-.loggedHeader .container .profile p {
-  color: #ffffff;
-  font-size: 2.4rem;
-  margin-left: 10px;
-}
-
-.loggedHeader .container .logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.loggedHeader .container .newEventButton {
-  color: #006699;
-  background-color: #ffffff;
-  font-size: 2.3rem;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 180px;
-}
-
-.loggedHeader .container .newEventButton:hover {
-  transform: scale(1.07);
-  transition: 0.3s;
-}
-
-.container {
-  width: 90%;
-  max-width: 1366px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-}
-
-main h1 {
-  margin: 50px auto 50px auto;
-}
-
-main .container {
-  flex-direction: column;
-  align-items: center;
-}
-
-main form {
-  width: 30%;
-  border: 1px solid #02344e;
-  border-radius: 8px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
-}
-
-main form a {
-  margin: 5px auto;
-  color: #006699;
-}
-
-form label {
-  margin: 5px;
-  font-size: 2rem;
-  color: #02344e;
-}
-
-form input,
-form textarea,
-form select,
-form .imgInput {
-  font-size: 1.8rem;
-  font-family: Roboto, Helvetica, sans-serif;
-  text-align: left;
-  border: 1px solid #cecece;
-  border-radius: 8px;
-  padding: 5px;
-  margin-bottom: 10px;
-}
-
-form input:focus,
-form textarea:focus,
-form select:focus {
-  border: 2px solid #00669980;
-}
-
-form textarea {
-  resize: vertical;
-}
-
-form input[type="file"] {
-  display: none;
-}
-
-form .imgInput {
   width: 100%;
-  height: 200px;
+  height: 100%;
+  padding: 10px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .container .profile {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-form .imgInput {
-  background-color: rgba(0, 0, 0, 0.05);
+header .container .profile img {
+  width: 50px;
+  height: 50px;
 }
 
-form .imgInput:hover {
-  background-color: rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-form .imgInput i {
-  color: #006699;
-  font-size: 4rem;
-}
-
-form .imgPreviewContainer {
-  border: none;
-  display: none;
-  overflow: hidden;
-  height: 200px;
-  position: relative;
-}
-
-form .imgPreviewContainer label .imgPreview {
-  width: 100%;
-  float: center;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-button,
-.button {
+header .container .profile p {
   color: #ffffff;
-  margin-top: 5px;
-  font-size: 1.5rem;
-  background: #006699;
-  border: none;
-  border-radius: 8px;
-  padding: 5px 30px;
-  cursor: pointer;
 }
 
-.msg {
-  width: 30%;
-  margin: 10px 50%;
-  text-align: center;
-  position: absolute;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-  transform: translateX(-50%);
+header .container .logo img {
+  width: 50px;
+  height: 50px;
 }
 
-.successMsg {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
+header .container .newEventButton {
+  text-decoration: none;
+  color: #006699;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 180px;
 }
 
-.errorMsg {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
+@media screen and (min-width: 1024px) {
+  header .container .profile {
+    flex-direction: row;
+  }
 }

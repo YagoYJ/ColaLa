@@ -1,34 +1,94 @@
+header {
+  width: 100%;
+  height: 70px;
+  background-color: #006699;
+}
+
+header .container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .container img {
+  width: 50px;
+}
+
 main {
-  background-image: url("../assets/img_login1.svg");
-  background-position: 10% 20%;
-  background-size: 25% auto;
-  background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 30px;
 }
 
 main .container {
-  background-image: url("../assets/img_login2.svg");
-  background-position: 90% 100%;
-  background-size: 15% auto;
-  background-repeat: no-repeat;
-}
-
-main .cont {
-  width: 30%;
-  border: 1px solid #02344e;
-  border-radius: 8px;
-  padding: 10px 30px;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-main .cont h3 {
+main .container h1 {
   color: #02344e;
-  font-weight: normal;
-  font-size: 1.9rem;
 }
 
-main .cont a {
-  font-size: 2.2rem;
-  margin-left: 10px;
-  color: #006699;
-  font-weight: normal;
+main .container form {
+  width: 100%;
+  margin: 30px 0;
+  padding: 10px;
+  border: 1px solid #cecece;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+main .container form label {
+  color: #02344e;
+  margin-bottom: 2px;
+}
+
+main .container form input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px 2px;
+  border: 1px solid #cecece;
+  border-radius: 2px;
+}
+
+main .container form button {
+  width: 100%;
+  color: #ffffff;
+  background-color: #006699;
+  padding: 5px 2px;
+  border: none;
+  border-radius: 2px;
+}
+
+main .container form a {
+  text-decoration: none;
+  color: #02344e;
+  margin: 5px auto;
+}
+
+main .container .cont {
+  width: 100%;
+  color: #02344e;
+  padding: 10px;
+  border: 1px solid #cecece;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main .container .cont a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #02344e;
+  margin: 5px auto;
 }

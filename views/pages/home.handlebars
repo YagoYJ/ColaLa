@@ -1,58 +1,67 @@
 <main>
     <div class="container">
-        <h2>Modalidades mais pesquisadas:</h2>
+        <h1>Modalidades mais pesquisadas</h1>
         <div class="modality">
-            <div class="card">
-                <img src="/assets/img_cardSoccer.svg" alt="Futebol">
-                <p>Futebol</p>
+            <div class="cards">
+
+                <div class="card">
+                    <img src="/assets/img_cardSoccer.svg" alt="Futebol">
+                    <p>Futebol</p>
+                </div>
+                <div class="card">
+                    <img src="/assets/img_cardRun.svg" alt="Corrida">
+                    <p>Corrida</p>
+                </div>
+                <div class="card">
+                    <img src="/assets/img_cardSkate.svg" alt="Skate">
+                    <p>Skate</p>
+                </div>
+                <div class="card">
+                    <img src="/assets/img_cardBasket.svg" alt="Basquete">
+                    <p>Basquete</p>
+                </div>
             </div>
-            <div class="card">
-                <img src="/assets/img_cardRun.svg" alt="Corrida">
-                <p>Corrida</p>
-            </div>
-            <div class="card">
-                <img src="/assets/img_cardSkate.svg" alt="Skate">
-                <p>Skate</p>
-            </div>
-            <div class="card">
-                <img src="/assets/img_cardBasket.svg" alt="Basquete">
-                <p>Basquete</p>
-            </div>
+            <a href="/modalities" class="button"><i class="fa fa-eye"></i> Ver mais</a>
         </div>
-        <a href="/modalities" class="button"><i class="fa fa-eye"></i> Ver mais</a>
 
-        <h2>Eventos mais famosos:</h2>
-        <div class="event">
-            {{#each event}}
-            <div class="card">
-                <div class="header">
+        <h1>Eventos mais famosos</h1>
+        <div class="events">
+            <div class="cards">
+                {{#each event}}
+                <div class="card">
+                    <div class="header">
 
-                    <div class="profile">
-                        <img src="{{user.avatar}}" alt="{{user.nickname}}">
-                        <span>{{user.nickname}}</span>
+                        <div class="profile">
+                            <img src="{{user.avatar}}" alt="{{user.nickname}}">
+                            <span>{{user.nickname}}</span>
+                        </div>
+                        <button class=" button">Detalhes</button>
                     </div>
-                    <button class=" button">Detalhes</button>
-                </div>
-                <div class="thumbnail">
-                    <img src="{{thumbnail}}" alt="{{title}}">
-                </div>
-                <div class="description">
+                    <div class="thumbnail">
+                        <img src="{{thumbnail}}" alt="{{title}}">
+                    </div>
+                    <div class="description">
 
-                    <h3>{{title}}</h3>
-                    <span><i class="fa fa-users"></i> {{members.length}} pessoas confirmadas</span><br>
-                    <span><i class="fa fa-map-marker"></i> {{address}}</span><br>
-                    <span><i class="fa fa-calendar"></i> {{date}} às {{hour}}</span>
+                        <h2>{{title}}</h2>
+                        <span><i class="fa fa-users"></i> {{members.length}} pessoas confirmadas</span><br>
+                        <span><i class="fa fa-map-marker"></i> {{address}}</span><br>
+                        <span><i class="fa fa-calendar"></i> {{date}} às {{hour}}</span>
+                    </div>
+                    <div class="buttonGroup">
+                        <form action="/backend/participate" method="POST">
+                            <input type="hidden" name="event" value="{{id}}">
+                            <button class="participate" type="submit"><i class="fa fa-user-plus"></i>
+                                Participar</button>
+                        </form>
+                        <input type="hidden" class="eventLink" value="https://colala.herokuapp.com/events/{{id}}">
+                        <button class="share"><i class="fa fa-share-alt"></i>
+                            Compartilhar</button>
+                    </div>
                 </div>
-                <div class="buttonGroup">
-                    <form action="/backend/participate" method="POST">
-                        <input type="hidden" name="event" value="{{id}}">
-                        <button class="participate" type="submit"><i class="fa fa-user-plus"></i> Participar</button>
-                        <button class="share"><i class="fa fa-share-alt"></i> Compartilhar</button>
-                    </form>
-                </div>
+                {{/each}}
             </div>
-            {{/each}}
+            <a href="/events" class="button"><i class="fa fa-eye"></i> Ver mais</a>
         </div>
-        <a href="/events" class="button"><i class="fa fa-eye"></i> Ver mais</a>
     </div>
 </main>
+<script src="/js/copyShareButton.js"></script>

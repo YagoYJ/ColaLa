@@ -81,6 +81,21 @@ router.get("/events", isLogged, (req, res) => {
     });
 });
 
+router.get("/events/:id", isLogged, (req, res) => {
+  const id = req.params.id;
+  Event.findById(id)
+    .then((event) => {
+      res.render("pages/eventDetails", {
+        style: "eventDetails.css",
+        event,
+      });
+    })
+    .catch((error) => {
+      req.flash("error_msg", "Produto não encontrado");
+      res.redirect("/home");
+    });
+});
+
 router.get("/modalities", isLogged, (req, res) => {
   Modality.find()
     .sort("name")

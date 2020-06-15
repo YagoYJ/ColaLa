@@ -1,98 +1,134 @@
-.container h1 {
-  margin: 50px 0;
+main {
+  width: 100%;
+  padding-top: 30px;
+}
+main .container {
+  width: 98%;
+  max-width: 990px;
+  margin: 0 auto;
 }
 
-main .container .event {
-  display: flex;
-  justify-content: space-between;
+main .container h1 {
+  color: #02344e;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+main .container .events {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-main .container .event .card {
-  width: 30%;
-  height: 440px;
-  border: 0.5px solid #cecece;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1);
+main .container .events .card {
+  width: 100%;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-    margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
-main .container .event .card .header {
+main .container .events .card {
+  max-width: 300px;
+  padding: 5px;
+  border: 1px solid #cecece;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+main .container .events .card .header {
   width: 100%;
+  height: 30px;
+  margin-bottom: 5px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-main .container .event .card .header .profile {
+main .container .events .card .header .profile {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-main .container .event .card .header .profile img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+main .container .events .card .header .profile img {
+  width: 30px;
+  height: 30px;
 }
 
-main .container .event .card .header .profile span {
-  color: #02344e;
+main .container .events .card .header .profile span {
   margin-left: 5px;
 }
 
-main .container .event .card .header button {
-  font-size: 1.4rem;
-  margin: 0;
+main .container .events .card .header button {
+  text-align: center;
+  color: #ffffff;
+  background-color: #006699;
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
 }
 
-main .container .event .card .thumbnail {
+main .container .events .card .thumbnail {
   width: 100%;
-  height: 220px;
+  height: 160px;
   overflow: hidden;
-  margin: 5px auto;
-  border-radius: 8px;
-  position: relative;
 }
 
-main .container .event .card .thumbnail img {
+main .container .events .card .thumbnail img {
   width: 100%;
-  border-radius: 8px;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
-main .container .event .card .description h3 {
-  font-size: 1.5rem;
+main .container .events .card .description {
+  width: 100%;
+  color: #02344e;
 }
 
-main .container .event .card .description span {
-  font-size: 1.3rem;
-  font-weight: bold;
+main .container .events .card .description h2 {
+  margin-bottom: 10px;
 }
 
-main .container .event .card .buttonGroup form {
+main .container .events .card .description span {
+  margin: 5px 0;
+}
+
+main .container .events .card .buttonGroup {
+  width: 100%;
+  margin: 10px auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  border: 0;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-direction: row;
+  justify-content: center;
 }
 
-main .container .event .card .buttonGroup form .participate {
-  width: 48%;
+main .container .events .card .buttonGroup form {
+  width: 100%;
+}
+
+main .container .events .card .buttonGroup .participate,
+main .container .events .card .buttonGroup .share {
+  width: 100%;
+  padding: 5px;
+  color: #ffffff;
+  border: none;
+  border-radius: 2px;
+  margin: 5px auto;
+}
+
+main .container .events .card .buttonGroup .participate {
   background-color: #29c542;
 }
-main .container .event .card .buttonGroup form .share {
-  width: 48%;
+
+main .container .events .card .buttonGroup .share {
+  background-color: #006699;
+}
+
+@media screen and (min-width: 630px) {
+  main .container .events .card {
+    margin: 10px;
+  }
 }
